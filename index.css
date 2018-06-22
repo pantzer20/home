@@ -1,10 +1,70 @@
-html, body, #map {
+html, body {
     height: 100%;
     width: 100%;
     margin: 0;
+    font-size: 7px;
+}
+* {
     font-family: 'Encode Sans Semi Expanded', sans-serif;
 }
+body {
+    display: flex;
+    flex-direction: column;
+}
+.dark {
+    background-color: #444;
+    color: white;
+}
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+}
+h1 {
+    font-size: 7vw;
+    margin: 0 8px 8px 8px;
+    letter-spacing: 0.2em;
+    font-variant: small-caps;
+}
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+nav > div {
+    margin: 6px 4vw;
+    display: flex;
+}
+nav > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+nav h2, nav a {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    margin: 0;
+    font-size: 2em;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+}
+.underline {
+    margin-top: 0.4em;
+    height: 0.25em;
+    width: 0;
+    transition: width 600ms ease-in-out;
+    background-color: white;
+}
+@media (min-width: 400px) {
+    h1 {
+        font-size: 4em;
+    }
+}
 #map {
+    flex: 1 1 auto;
     background-color: black;
     filter: brightness(0);
     transition: filter 1.5s;

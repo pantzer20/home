@@ -11,12 +11,13 @@ const education = {
         properties: {
             name: 'University of Wisconsin &ensp; Madison',
             locale: 'Madison, Wisconsin',
-            start: 'September 2016',
-            end: 'present',
+            start: new Date(2016, 8),
+            end: new Date(),
             degree: 'Master of Sciences',
             major: 'Cartography and Geographic Information Systems',
             emphasis: 'Development',
-            url: ''
+            grade: 4,
+            narrative: ''
         }
     }, {
         type: 'Feature',
@@ -27,12 +28,14 @@ const education = {
         properties: {
             name: 'University of Wisconsin &ensp; Green Bay',
             locale: 'Green Bay, Wisconsin',
-            start: 'June 2014',
-            end: 'May 2015',
+            start: new Date(2014, 4),
+            end: new Date(2015, 4),
             degree: 'Bachelor of Arts',
             major: 'Urban and Regional Studies',
             emphasis: 'Urban and Regional Planning',
-            minor: ['Environmental Policy and Planning', 'Geography']
+            minor: ['Environmental Policy and Planning', 'Geography'],
+            grade: 3.78,
+            narrative: ''
         }
     }, {
         type: 'Feature',
@@ -43,13 +46,22 @@ const education = {
         properties: {
             name: 'Seminole State College of Florida',
             locale: 'Sanford, Florida',
-            start: 'June 2012',
-            end: 'May 2013',
+            start: new Date(2012, 5),
+            end: new Date(2013, 11),
             degree: 'Associate of Arts',
-            emphasis: 'Political Science'
+            emphasis: 'Political Science',
+            grade: 4,
+            narrative: ''
         }
     }]
 };
+
+$('nav > div > div').on('mouseover', function() {
+    $(this).find('.underline').css('width', $(this).width() + 'px');
+});
+$('nav > div > div').on('mouseout', function() {
+    $('.underline').css('width', '0');
+});
 
 const employer = {
     type: 'FeatureCollection',
@@ -63,8 +75,9 @@ const employer = {
             name: 'Orange County Board of County Commissioners',
             locale: 'Orlando, Florida',
             unit: 'Public Works Department',
-            start: 'May 2017',
-            end: 'present'
+            start: new Date(2017, 4),
+            end: new Date(),
+            narrative: ''
         }
     }, {
         type: 'Feature',
@@ -76,8 +89,9 @@ const employer = {
             name: 'City of Aberdeen',
             locale: 'Aberdeen, South Dakota',
             unit: 'Planning and Zoning Department',
-            start: 'August 2015',
-            end: 'May 2017'
+            start: new Date(2015, 7),
+            end: new Date(2017, 4),
+            narrative: ''
         }
     }, {
         type: 'Feature',
@@ -89,8 +103,9 @@ const employer = {
             name: 'Brown County',
             locale: 'Green Bay, Wisconsin',
             unit: 'Planning and Land Services',
-            start: 'January 2015',
-            end: 'April 2015'
+            start: new Date(2015, 0),
+            end: new Date(2015, 3),
+            narrative: ''
         }
     }]
 };
@@ -109,7 +124,7 @@ map.on('load', () => {
         duration: 0.1
     });
     map.on('moveend', () => {
-        document.querySelector('#map').className = 'visible';
+        $('#map, header').addClass('visible');
     });
     map.addLayer({
         id: 'education',
