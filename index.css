@@ -16,13 +16,14 @@ body {
     color: white;
 }
 header {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 8px;
 }
 h1 {
-    font-size: 7vw;
+    font-size: 6.9vw;
     margin: 0 8px 8px 8px;
     letter-spacing: 0.2em;
     font-variant: small-caps;
@@ -56,9 +57,36 @@ nav h2, nav a {
     height: 0.25em;
     width: 0;
     transition: width 600ms ease-in-out;
+    background-color:hsl(0, 0%, 65%);
+}
+#contact > a {
+    margin-left:8px;
+    font-size:2.2em;
+}
+#timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    height: 2.5em;
+}
+#min-year, #max-year {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+}
+#timeline > div {
+    flex: 1 1 auto;
+    margin: 0 1.5em;
+}
+#timeline > div > div {
+    display: inline-block;
+    height: 2.1em;
     background-color: white;
 }
-@media (min-width: 400px) {
+@media (min-width: 406px) {
     h1 {
         font-size: 4em;
     }
