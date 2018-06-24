@@ -1,3 +1,11 @@
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.8;
+    }
+}
 html, body {
     height: 100%;
     width: 100%;
@@ -12,26 +20,48 @@ body {
     flex-direction: column;
 }
 .dark {
-    background-color: #444;
+    background-color: #292929;
     color: white;
 }
 header {
+    position: fixed;
+    width: 100vw;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 8px;
+}
+#title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1em;
+    opacity: 0.9;
 }
 h1 {
     font-size: 6.9vw;
-    margin: 0 8px 8px 8px;
+    margin: 0;
     letter-spacing: 0.2em;
     font-variant: small-caps;
+}
+#subhead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background: linear-gradient(45deg, transparent 35px, #222 35px), linear-gradient(315deg, transparent 35px, #222 35px);
+    background-size: 51%, 51%;
+    background-position: bottom left, bottom right;
+    background-repeat: no-repeat;
+    padding: 0.5em 2em;
+    opacity: 0.8;
+    
+    animation-duration: 3000ms;
+    animation-name: fadein;
 }
 nav > div {
     margin: 6px 4vw;
@@ -65,30 +95,46 @@ nav h2, nav a {
 }
 #timeline {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90vw;
-    height: 2.5em;
+    width: 70%;
+    height: 2em;
+    padding: 0.8em 1.2em;
+    border-radius: 1em;
+    margin-top: 1.6em;
+    opacity: 0;
+    transition: opacity 500ms;
+}
+#timeline.ready {
+    opacity: 0.8;
 }
 #min-year, #max-year {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
-    font-size: 1.8em;
+    font-size: 1.6em;
     font-weight: 600;
     letter-spacing: 0.8px;
 }
 #timeline > div {
     flex: 1 1 auto;
     margin: 0 1.5em;
+    height: 2em;
 }
 #timeline > div > div {
     display: inline-block;
-    height: 2.1em;
+    height: 2em;
     background-color: white;
 }
 @media (min-width: 406px) {
     h1 {
         font-size: 4em;
+    }
+}
+@media (max-width: 900px) {
+    nav {
+        background: #222;
+        width: 100vw;
+    }
+    #timeline {
+        width: 85vw;
     }
 }
 #map {
