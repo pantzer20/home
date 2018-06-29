@@ -31,8 +31,8 @@ const data = {
                 coordinates: [-87.922, 44.532]
             },
             properties: {
-                name: 'University of Wisconsin &ensp; Green Bay',
-                short: 'UW &ensp; Green Bay',
+                name: 'University of Wisconsin &ndash; Green Bay',
+                short: 'UW &ndash; Green Bay',
                 locale: 'Green Bay, Wisconsin',
                 start: new Date(2014, 4),
                 end: new Date(2015, 4),
@@ -50,8 +50,8 @@ const data = {
                 coordinates: [-89.413, 43.076]
             },
             properties: {
-                name: 'University of Wisconsin &ensp; Madison',
-                short: 'UW &ensp; Madison',
+                name: 'University of Wisconsin &ndash; Madison',
+                short: 'UW &ndash; Madison',
                 locale: 'Madison, Wisconsin',
                 start: new Date(2016, 8),
                 end: new Date(),
@@ -123,7 +123,14 @@ const map = new mapboxgl.Map({
     touchZoomRotate: false
 });
 
-let popup = new mapboxgl.Popup();
+let hoverPopup = new mapboxgl.Popup({
+    closeButton: false,
+    className: 'hover-popup'
+});
+let clickPopup = new mapboxgl.Popup({
+    closeButton: false,
+    className: 'click-popup'
+});
 
 map.on('load', () => {
     map.fitBounds([[-100, 27.3], [-79, 46.3]], {
@@ -178,15 +185,19 @@ map.on('load', () => {
         }
     });
     
-    map.on('mouseenter', 'employers', e => {
+    function featureHover(e) {
         const f = e.features[0];
-        popup
+        hoverPopup
             .setLngLat(f.geometry.coordinates)
-            .setHTML(f.properties.name)
+            .setHTML(f.properties.short)
             .addTo(map);
         console.log(e);
-    });
-    map.on('mouseleave', 'employers', () => popup.remove());
+    }
+    
+    map.on('mouseenter', 'education', e => featureHover(e));    
+    map.on('mouseenter', 'employers', e => featureHover(e));
+    map.on('mouseleave', 'education', () => hoverPopup.remove());
+    map.on('mouseleave', 'employers', () => hoverPopup.remove());
     
     setTimeout(() => makeActive('employers'), 800);
 });
@@ -218,7 +229,9 @@ function makeActive(layer) {
     $('#timeline').removeClass('ready');
     
     map.setPaintProperty(otherLayer, 'circle-opacity', 0);
-    setTimeout(() => map.setLayoutProperty(otherLayer, 'visibility', 'none'), 1000);
+    setTimeout(() => {
+        if (map.getPaintProperty(otherLayer, 'circle-opacity') === 0) map.setLayoutProperty(otherLayer, 'visibility', 'none');
+    }, 1000);
     map.setLayoutProperty(layer, 'visibility', 'visible');
     map.setPaintProperty(layer, 'circle-opacity', 0.85);
     
@@ -257,5 +270,5 @@ function makeActive(layer) {
 }
 
 function timelineHover(props) {
-    
+    console.log(props);
 }

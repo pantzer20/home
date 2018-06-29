@@ -101,7 +101,7 @@ nav h2, nav a {
     border-radius: 1em;
     margin-top: 1.6em;
     opacity: 0;
-    transition: opacity 500ms;
+    transition: opacity 500ms linear;
 }
 #timeline.ready {
     opacity: 0.8;
