@@ -123,6 +123,38 @@ nav h2, nav a {
     height: 2em;
     background-color: white;
 }
+#timeline-tooltip {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 300ms linear;
+    z-index: 500;
+    background-color: rgba(0, 0, 0, 0.75);
+    pointer-events: none;
+    border-radius: 0.5em;
+}
+#timeline-tooltip > div {
+    margin: 1.3em;
+}
+#timeline-tooltip > div > p {
+    text-align: center;
+    margin: 0;
+}
+#timeline-tooltip > div > p:nth-child(1) {
+    font-size: 2em;
+    letter-spacing: 0.05em;
+    font-family: 'Montserrat';
+}
+#timeline-tooltip > div > p:nth-child(2) {
+    margin-top: 0.3em;
+    letter-spacing: 0.05em;
+    font-size: 1.7em;
+}
+#timeline-tooltip > div > p:nth-child(3) {
+    margin-top: 0.8em;
+    font-style: italic;
+    font-size: 1.3em;
+    color: #ddd;
+}
 @media (min-width: 406px) {
     h1 {
         font-size: 4em;

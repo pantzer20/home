@@ -1,5 +1,7 @@
 'use strict';
 
+const present = new Date();
+
 const data = {
     colors: {
         education: 'hsl(0, 70%, 65%)',
@@ -15,7 +17,6 @@ const data = {
             },
             properties: {
                 name: 'Seminole State College of Florida',
-                short: 'Seminole State',
                 locale: 'Sanford, Florida',
                 start: new Date(2012, 5),
                 end: new Date(2013, 11),
@@ -32,7 +33,6 @@ const data = {
             },
             properties: {
                 name: 'University of Wisconsin &ndash; Green Bay',
-                short: 'UW &ndash; Green Bay',
                 locale: 'Green Bay, Wisconsin',
                 start: new Date(2014, 4),
                 end: new Date(2015, 4),
@@ -51,10 +51,9 @@ const data = {
             },
             properties: {
                 name: 'University of Wisconsin &ndash; Madison',
-                short: 'UW &ndash; Madison',
                 locale: 'Madison, Wisconsin',
                 start: new Date(2016, 8),
-                end: new Date(),
+                end: present,
                 degree: 'Master of Sciences',
                 major: 'Cartography and Geographic Information Systems',
                 emphasis: 'Development',
@@ -107,11 +106,36 @@ const data = {
                 locale: 'Orlando, Florida',
                 unit: 'Public Works Department',
                 start: new Date(2017, 4),
-                end: new Date(),
+                end: present,
                 narrative: ''
             }
         }]
-    }
+    },
+    works: [{
+        title: 'Sharing the Glass',
+        subtitle: 'Achieving clean water and sanitation for all',
+        medium: 'Web Map',
+        date: new Date(2018, 4),
+        narrative: '',
+        thumbnail: '',
+        url: ''
+    }, {
+        title: 'Boom, Bust, and Renewal',
+        subtitle: 'The growth and demise of urban areas throughout American history',
+        medium: 'Web Map',
+        date: new Date(2018, 2),
+        narrative: '',
+        thumbnail: '',
+        url: ''
+    }, {
+        title: 'All Votes Are Not Created Equal',
+        subtitle: 'Disparities in the Electoral Power of American Citizens',
+        medium: 'Web Map',
+        date: new Date(2017, 7),
+        narrative: '',
+        thumbnail: '',
+        url: ''
+    }]
 };
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicGFudHplciIsImEiOiJjaXNna2wxbm0wMXc2MnludmJxc3QxanE5In0.z4TQn08v14lHWSgDJnWcDQ';
@@ -189,7 +213,7 @@ map.on('load', () => {
         const f = e.features[0];
         hoverPopup
             .setLngLat(f.geometry.coordinates)
-            .setHTML(f.properties.short)
+            .setHTML(!!f.properties.short ? f.properties.short : f.properties.name)
             .addTo(map);
         console.log(e);
     }
@@ -213,6 +237,14 @@ $('nav > div > div').on('mouseout', function() {
 $('#education, #employers').on('click', function() {
     makeActive($(this).prop('id'));
 });
+
+function formatDate(date) {
+    if (date === present) return 'present';
+    else {
+        const split = date.toDateString().split(' ');
+        return split[1] + ' ' + split[3];
+    }
+}
 
 function makeActive(layer) {
     const otherLayer = (layer === 'education' ? 'employers' : 'education');
@@ -263,12 +295,38 @@ function makeActive(layer) {
                 .css('background-color', data.colors[layer])
                 .css('margin-right', (!!margin ? margin + '%' : '0'))
                 .css('cursor', 'pointer')
-                .on('mouseover', () => timelineHover(f[i].properties));
+                .on('click', [f[i].properties, layer], timelineHandler)
+                .on('mouseover', [f[i].properties, layer], timelineHandler)
+                .on('mouseout', [f[i].properties, layer], timelineHandler)
+                .on('mousemove', [f[i].properties, layer], timelineHandler);
         }
         $('#timeline').addClass('ready');
     }, 500);
 }
 
-function timelineHover(props) {
-    console.log(props);
+function activateFeature(layer, props) {
+    
+}
+
+function timelineHandler(e) {
+    const props = e.data[0];
+    const layer = e.data[1];
+    if (e.type === 'click') activateFeature(layer, props);
+    else if (e.type === 'mousemove') {
+        $('#timeline-tooltip')
+            .css('top', (e.pageY - 30) + 'px')
+            .css('left', (e.pageX + 10) + 'px')
+    } else if (e.type === 'mouseover') {
+        $('#timeline-tooltip')
+            .html(`
+                <div>
+                    <p>${!!props.short ? props.short : props.name}</p>
+                    <p>${formatDate(props.start)} - ${formatDate(props.end)}</p>
+                    <p>Click for more information</p>
+                </div>
+            `)
+            .css('top', (e.pageY - 30) + 'px')
+            .css('left', (e.pageX + 10) + 'px')
+            .css('opacity', '0.93');
+    } else if (e.type === 'mouseout') $('#timeline-tooltip').css('opacity', '0');
 }
