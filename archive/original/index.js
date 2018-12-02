@@ -118,6 +118,14 @@ const data = {
         date: new Date(2018, 4),
         narrative: '',
         thumbnail: '',
+        url: 'https://jpantzlaff.github.io/water-sanitation-hygiene-map/'
+    }, {
+        title: 'Stacking the Deck',
+        subtitle: 'Indicators of gerrymandering in United States congressional districts',
+        medium: 'Web Map',
+        date: new Date(2018, 3),
+        narrative: '',
+        thumbnail: '',
         url: ''
     }, {
         title: 'Boom, Bust, and Renewal',
@@ -126,12 +134,20 @@ const data = {
         date: new Date(2018, 2),
         narrative: '',
         thumbnail: '',
-        url: ''
+        url: 'https://jpantzlaff.github.io/us-urban-population-history/'
     }, {
         title: 'All Votes Are Not Created Equal',
         subtitle: 'Disparities in the Electoral Power of American Citizens',
         medium: 'Web Map',
         date: new Date(2017, 7),
+        narrative: '',
+        thumbnail: '',
+        url: ''
+    }, {
+        title: 'Vancouver Walkability',
+        subtitle: '',
+        medium: 'Web Map',
+        date: new Date(2017, 4),
         narrative: '',
         thumbnail: '',
         url: ''

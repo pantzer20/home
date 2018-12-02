@@ -1,0 +1,322 @@
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.8;
+    }
+}
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background-color: #eee;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #555;
+}
+html {
+    scroll-behavior: smooth;
+}
+html, body {
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+    font-size: 7px;
+}
+* {
+    box-sizing: border-box;
+    font-family: 'Encode Sans Semi Expanded', sans-serif;
+}
+p {
+    margin: 0;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+}
+.c1, .c2 {
+    color: white;
+}
+.c1 {
+    background-color: #292929e8;
+}
+.c2 {
+    background-color: #2f2f2ff2;
+}
+header {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+#title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 1em 1em 2em 1em;
+}
+#title :first-child {
+    margin: 0;
+    font-size: 6.5vw;
+    letter-spacing: 0.2em;
+    font-variant: small-caps;
+}
+#title :last-child {
+    margin: 4px 0 0 0;
+    font-size: 1.75em;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+#subhead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bevel {
+    background: linear-gradient(45deg, transparent 35px, #222 35px), linear-gradient(315deg, transparent 35px, #222 35px);
+    background-size: 51%, 51%;
+    background-position: bottom left, bottom right;
+    background-repeat: no-repeat;
+}
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.5em 4em;
+    opacity: 0.84;
+    animation-duration: 3000ms;
+    animation-name: fadein;
+}
+nav > div {
+    margin: 6px 4vw;
+    display: flex;
+}
+nav > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+nav a, #contact a, .slide-button {
+    margin: 0;
+    font-size: 2em;
+    text-decoration: none;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+nav a {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+#contact {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #292929fb;
+}
+#contact a {
+    font-size: 2em;
+    letter-spacing: 1.3px;
+    padding: 0.3em 1em;
+    margin: 0.7em 0;
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    transition: color 400ms ease-in-out;
+}
+#contact a+a {
+    border-left: solid 1px #aaa;
+}
+#contact i {
+    font-size: 140%;
+}
+.fa-github {
+    margin-right: 0.5em;
+}
+.fa-linkedin {
+    margin-right: 0.54em;
+}
+#contact a:hover {
+    color: #d0d0d0;
+}
+.underline {
+    margin-top: 0.4em;
+    height: 2px;
+    width: 0;
+    transition: width 600ms ease-in-out, background-color 600ms ease-in-out;
+    background-color: rgb(103, 166, 228);
+}
+.underline:hover {
+    background-color: hsl(0, 0%, 65%);
+}
+.image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-position: center;
+    background-size: cover;
+    transition: opacity 2000ms;
+    filter: grayscale(0.15);
+}
+#works {
+    height: 100vh;
+    width: 100%;
+    z-index: 0;
+}
+.reverse, .forward {
+    position: absolute;
+    top: 50%;
+    border: none;
+    padding: 1em 0.75em;
+    font-size: 2.5em;
+    opacity: 0.84;
+    cursor: pointer;
+    transition: opacity 800ms ease-out;
+}
+.reverse {
+    left: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.forward {
+    right: 0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.slide {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: opacity 2000ms;
+}
+.slide-base {
+    margin: 0 1em 3em 1em;
+    padding: 1em;
+    transition: opacity 800ms ease-out;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 2px;
+}
+.slide-base > div {
+    margin: 1em 2.5em;
+    text-align: center;
+    justify-content: center;
+}
+.slide-base > :first-child {
+    flex: 1 1 auto;
+}
+.slide-base > :last-child {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+}
+.hidden {
+    opacity: 0 !important;
+}
+.slide-title {
+    margin: -0.2em 0 0 0;
+    font-size: 3em;
+    letter-spacing: 0.7px;
+}
+.slide-subtitle {
+    font-size: 2em;
+    letter-spacing: 0.3px;
+}
+.slide-button {
+    padding: 0.5em 0.8em;
+    background-color: rgb(82, 137, 191);
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.75px;
+    border-radius: 2px;
+    font-size: 2em;
+}
+#resume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 6em solid #292929;
+    padding-bottom: 1em;
+}
+#resume > p {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.7em;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0 4em;
+    margin-bottom: 0.7em;
+    letter-spacing: 0.1em;
+    width: fit-content;
+    height: 1.8em;
+    background: linear-gradient(45deg, transparent 35px, #292929 35px), linear-gradient(315deg, transparent 35px, #292929 35px);
+    background-size: 51%, 51%;
+    background-position: bottom left, bottom right;
+    background-repeat: no-repeat;
+}
+#resume > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 -3em;
+    width: 100%;
+}
+.col {
+    flex: 1 0 50%;
+    padding: 2.5em 6em;
+}
+.col p {
+    font-size: 2em;
+}
+p.l1 {
+    min-width: 6.7em;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.07em;
+    font-size: 2.3em;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+p.l2 {
+    font-size: 2.2em;
+    font-weight: 500;
+    margin-bottom: 0.2em;
+}
+p.l3 {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+@media (min-width: 430px) {
+    #title :first-child {
+        font-size: 4em;
+    }
+}
+@media (max-width: 700px) {
+    #title {
+        flex-direction: column;
+    }
+    .bevel {
+        background: #222;
+    }
+    nav {
+        width: 100vw;
+        padding: 0.5em 0;
+    }
+}
+@media (max-width: 800px) {
+    .col {
+        flex: 1 0 100%;
+    }
+}

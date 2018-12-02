@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="robots" content="noindex">
+        <meta name="author" content="Johnathon Pantzlaff. ALl rights reserved.">
+        <title>Johnathon Pantzlaff</title>
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Expanded|Montserrat">
+        <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/brands.css" integrity="sha384-7xAnn7Zm3QC1jFjVc1A6v/toepoG3JXboQYzbM0jrPzou9OFXm/fY6Z/XiIebl/k" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <header>
+            <div id="title" class="dark">
+                <h1>Johnathon Pantzlaff</h1>
+            </div>
+            <div id="subhead">
+                <nav>
+                    <div id="education">
+                        <div>
+                            <h2>EDUCATION</h2>
+                            <div class="underline" style="background-color:hsl(0, 70%, 65%)"></div>
+                        </div>
+                    </div>
+                    <div id="employers">
+                        <div>
+                            <h2>EMPLOYERS</h2>
+                            <div class="underline" style="background-color:hsl(210, 70%, 65%)"></div>
+                        </div>
+                    </div>
+                    <div id="works">
+                        <div>
+                            <h2>WORKS</h2>
+                            <div class="underline"></div>
+                        </div>
+                    </div>
+                    <div id="resume">
+                        <div>
+                            <h2>R&Eacute;SUM&Eacute;</h2>
+                            <div class="underline"></div>
+                        </div>
+                    </div>
+                    <div id="contact">
+                        <div>
+                            <a href="mailto:jpantzlaff@gmail.com">CONTACT</a>
+                            <div class="underline"></div>
+                        </div>
+                        <a href="https://github.com/jpantzlaff" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/jpantzlaff/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </nav>
+                <div id="timeline-tooltip" class="dark"></div>
+                <div id="timeline" class="dark">
+                    <p id="min-year"></p>
+                    <div></div>
+                    <p id="max-year"></p>
+                </div>
+            </div>
+        </header>
+        <div id="map"></div>
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
