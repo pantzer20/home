@@ -1,9 +1,17 @@
-@keyframes fadein {
+@keyframes fadein84 {
     from {
         opacity: 0;
     }
     to {
-        opacity: 0.8;
+        opacity: 0.84;
+    }
+}
+@keyframes fadein100 {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 ::-webkit-scrollbar {
@@ -81,14 +89,19 @@ header {
     background-position: bottom left, bottom right;
     background-repeat: no-repeat;
 }
+.reverse, .forward, .slide-base {
+    animation-duration: 2000ms;
+}
+nav, .reverse, .forward {
+    animation-name: fadein84;
+}
 nav {
+    animation-duration: 2400ms;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 0.5em 4em;
     opacity: 0.84;
-    animation-duration: 3000ms;
-    animation-name: fadein;
 }
 nav > div {
     margin: 6px 4vw;
@@ -100,10 +113,12 @@ nav > div > div {
     align-items: center;
     cursor: pointer;
 }
+.slide, nav a, #contact a, .slide-button {
+    text-decoration: none;
+}
 nav a, #contact a, .slide-button {
     margin: 0;
     font-size: 2em;
-    text-decoration: none;
     color: white;
     font-family: 'Montserrat', sans-serif;
 }
@@ -202,6 +217,7 @@ nav a {
     transition: opacity 2000ms;
 }
 .slide-base {
+    animation-name: fadein100;
     margin: 0 1em 3em 1em;
     padding: 1em;
     transition: opacity 800ms ease-out;
@@ -235,6 +251,9 @@ nav a {
     letter-spacing: 0.3px;
 }
 .slide-button {
+    cursor: pointer;
+    border: none;
+    transition: background-color 500ms;
     padding: 0.5em 0.8em;
     background-color: rgb(82, 137, 191);
     text-transform: uppercase;
@@ -242,6 +261,9 @@ nav a {
     letter-spacing: 0.75px;
     border-radius: 2px;
     font-size: 2em;
+}
+.slide-button:hover {
+    background-color: rgb(97, 160, 222);
 }
 #resume {
     display: flex;

@@ -1,12 +1,12 @@
 class Slide {
     constructor(options) {
         this.options = options;
-        this.content = $('<div class="slide"></div>');
+        this.content = $(`<a class="slide" href="${options.url}"></a>`);
         this.image = $('<div class="image"></div>');
         this.image.css('background-image', `url("${options.image}")`);
         this.title = $(`<p class="slide-title">${options.title}</p>`);
         this.subtitle = $(`<p class="slide-subtitle">${options.subtitle}</p>`);
-        this.button = $(`<a href="${options.url}" class="slide-button">View ${options.medium}</a>`);
+        this.button = $(`<button class="slide-button">View ${options.medium}</button>`);
         this.baseL = $('<div>')
           .append(this.title)
           .append(this.subtitle);
@@ -326,5 +326,5 @@ function setActive() {
 $(window).on('load', () => {
     $(window).on('resize', () => elementBounds = getElementBounds());
     $(document).on('scroll', () => setActive());
-    setActive();
+    setTimeout(() => setActive(), 1500);
 });
