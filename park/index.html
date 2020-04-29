@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>ParkCentral - Your guide to Central Park</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Johnathon Pantzlaff">
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="permissions-modal" class="modal">
+            <div class="modal-content green">
+                <p>In order to help you find your way around the park, we need to know your current location. When prompted, please allow your location to be shared.</p>
+                <div id="location-loading">
+                    <div id="location-spinner"></div>
+                    <p>Waiting for location&hellip;</p>
+                </div>
+            </div>
+        </div>
+        <div id="camera-modal" class="modal">
+            <div class="modal-content green">
+                <form id="image-form">
+                    <textarea id="image-comment" class="light-green" name="comment" type="text" placeholder="Describe your photo&hellip;" maxlength="100"></textarea>
+                    <input id="lat" class="hide" name="lat" type="text">
+                    <input id="lon" class="hide" name="lon" type="text">
+                    <input class="hide" id="image-file" type="file" name="photo" accept="image/jpeg">
+                    <label id="image-select" class="mid-green" for="image-file"><i class="fas fa-camera"></i>Take photo</label>
+                </form>
+                <div id="submitting">
+                    <div id="submission-spinner"></div>
+                    <p>Submitting photo&hellip;</p>
+                </div>
+            </div>
+        </div>
+        <div id="wrapper">
+            <div id="map"></div>
+            <footer class="green">
+                <p id="help-text"></p>
+                <div id="activities">
+                    <a id="travel" class="out-park dark-green" href="https://www.google.com/maps/dir//Central+Park,+New+York,+NY/"><i class="fas fa-route"></i>Go to the park!</a>
+                    <button id="play" class="in-park out-park dark-green"><i class="fas fa-child"></i>Play on the playground</button>
+                    <button id="statue" class="in-park out-park dark-green"><i class="fas fa-archway"></i>Visit statues</button>
+                    <button id="baseball" class="in-park out-park dark-green"><i class="fas fa-baseball-ball"></i>Play ball!</button>
+                    <button id="drink" class="in-park dark-green"><i class="fas fa-tint"></i>Get a drink</button>
+                    <button id="fountain" class="in-park out-park dark-green"><i class="fas fa-water"></i>Relax by the water</button>
+                    <button id="photo" class="in-park dark-green"><i class="fas fa-camera"></i>Take photos</button>
+                </div>
+                <div id="layers"></div>
+            </footer>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/topojson-client@3"></script>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js"></script>
+        <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+        <script src="https://unpkg.com/kdbush@3.0.0/kdbush.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.4/fuse.min.js"></script>
+        <script src="lib/geokdbush.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+        THIRD-PARTY ATTRIBUTION
+        
+        Some layers in this map's style are authored by Mapbox (https://www.mapbox.com/) as part of its Lè Shine style. Most other layers are derivative works of said Lè Shine style, created specifically for this work.
+        
+        All icons are provided by Mapbox as part of its "Maki" collection (https://www.mapbox.com/maki-icons/), which is dedicated into the public domain.
+        
+        The delineation of West Berlin is provided by Geoportal Berlin (https://www.stadtentwicklung.berlin.de/geoinformation/) in a work titled "Verlauf der Berliner Mauer, 1989" (https://www.arcgis.com/home/item.html?id=cc4cdee584c04749a2065939d2e09596).
+        
+        Country polygons, which are used to derive the colored alliance polygons, are provided by Natural Earth (https://www.naturalearthdata.com/) and dedicated into the public domain.
+    -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex">
+        <title>Mapbox Tileset: Cold War</title>
+        <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css">
+        <style>
+            html, body, #map {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js"></script>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoicGFudHplciIsImEiOiJjaXNna2wxbm0wMXc2MnludmJxc3QxanE5In0.z4TQn08v14lHWSgDJnWcDQ';
+            const map = new mapboxgl.Map({
+                container: 'map',
+                style: 'style.json'
+            });
+        </script>
+    </body>
+</html>

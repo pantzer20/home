@@ -59,12 +59,18 @@ class Slideshow {
         }
         this.timer = setTimeout(() => this.forward(), this.options.interval);
     }
+    resume() {
+        this.active = this.activeId;
+    }
+    suspend() {
+        if (this.timer) clearTimeout(this.timer);
+    }
     forward() {
-        if (this.active === this.slides.length - 1) return this.active = 0;
+        if (this.active === this.slides.length - 1) this.active = 0;
         else this.active += 1;
     }
     reverse() {
-        if (this.active === 0) return this.active = this.slides.length - 1;
+        if (this.active === 0) this.active = this.slides.length - 1;
         else this.active -= 1;
     }
 }
@@ -73,48 +79,36 @@ const works = new Slideshow($('body'), $('#works'),
     [
         {
             title: 'Boom, Bust, and Renewal',
-            subtitle: 'The growth and demise of urban areas throughout American history',
+            subtitle: 'Growth and demise in urban areas throughout American history',
             medium: 'Application',
             image: './slides/boom-bust-renewal.png',
             url: './projects/boom-bust-renewal/'
         }, {
             title: 'A Slient Flight',
-            subtitle: 'Examining shifting populations in the United States',
+            subtitle: 'Shifting populations in the United States',
             medium: 'Infographic',
             image: './slides/a-silent-flight.png',
             url: './projects/a-silent-flight.png'
         }, {
             title: 'Sharing the Glass',
-            subtitle: 'Achieving clean water and sanitation for all',
+            subtitle: 'Water and sanitation availability in Africa and South Asia<br><a class="award" href="http://nacis.org/awards/student-dynamic-map-competition/"><span class="fas fa-award"></span>2018 Winner &ndash; NACIS Student Dynamic Mapping Competition</a>',
             medium: 'Application',
             image: './slides/sharing-the-glass.png',
             url: './projects/sharing-the-glass/'
         }/*, {
-            title: 'Sharing the Glass',
-            subtitle: 'Achieving clean water and sanitation for all',
+            title: 'Not All Votes Are Created Equal',
+            subtitle: 'Individual vote power in U.S. federal elections',
             medium: 'Application',
-            image: './slides/sharing-the-glass.png',
-            url: ''
-        }, {
-            title: 'Sharing the Glass',
-            subtitle: 'Achieving clean water and sanitation for all',
-            medium: 'Application',
-            image: './slides/sharing-the-glass.png',
-            url: ''
-        }, {
-            title: 'Sharing the Glass',
-            subtitle: 'Achieving clean water and sanitation for all',
-            medium: 'Application',
-            image: './slides/sharing-the-glass.png',
-            url: ''
+            image: './slides/not-all-votes-are-created-equal.png',
+            url: './projects/not-all-votes-are-created-equal/'
         }*/
     ],
     {
-        interval: 5000
+        interval: 6000
     }
 );
-window.works = works;
 
+/*
 const data = {
     education: {
         type: 'FeatureCollection',
@@ -229,14 +223,6 @@ const data = {
         thumbnail: '',
         url: ''
     }, {
-        title: 'All Votes Are Not Created Equal',
-        subtitle: 'Disparities in the Electoral Power of American Citizens',
-        medium: 'Web Map',
-        date: new Date(2017, 7),
-        narrative: '',
-        thumbnail: '',
-        url: ''
-    }, {
         title: 'Vancouver Walkability',
         subtitle: '',
         medium: 'Web Map',
@@ -246,6 +232,7 @@ const data = {
         url: ''
     }]
 };
+*/
 
 const nav = {
     elements: {
@@ -265,7 +252,7 @@ const nav = {
     }
 };
 for (let e in nav.elements) {
-    nav.elements[e].on('click', () => scroll(e));
+    nav.elements[e].on('click', () => scrollToSection(e));
 }
 
 function getElementBounds() {
@@ -281,29 +268,17 @@ function getElementBounds() {
 }
 let elementBounds = getElementBounds();
 
-function scroll(target) {
+function scrollToSection(target) {
     if (target === 'works') {
-        $('#works').get(0).scrollIntoView({
-            behavior: 'smooth'
-        });
+        $('#works').get(0).scrollIntoView();
     } else if (target === 'resume') {
         if (elementBounds.header.height + elementBounds.resume.height < elementBounds.window.height) {
-            $('html').get(0).scroll({
-                left: 0,
-                top: elementBounds.body.height - elementBounds.window.height - elementBounds.contact.height,
-                behavior: 'smooth'
-            });
+            window.scroll(0, elementBounds.body.height - elementBounds.window.height - elementBounds.contact.height);
         } else {
-            $('html').get(0).scroll({
-                left: 0,
-                top: elementBounds.window.height - elementBounds.header.height,
-                behavior: 'smooth'
-            });
+            window.scroll(0, elementBounds.window.height - elementBounds.header.height);
         }
     } else if (target === 'contact') {
-        $('#contact').get(0).scrollIntoView({
-            behavior: 'smooth'
-        });
+        $('#contact').get(0).scrollIntoView();
     }
 }
 

@@ -45,10 +45,10 @@ p {
     color: white;
 }
 .c1 {
-    background-color: #292929e8;
+    background-color: rgba(41, 41, 41, 0.91);
 }
 .c2 {
-    background-color: #2f2f2ff2;
+    background-color: rgba(47, 47, 47, 0.95);
 }
 header {
     position: fixed;
@@ -62,12 +62,29 @@ header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     width: 100%;
     padding: 1em 1em 2em 1em;
 }
+@supports (place-items: stretch) {
+    #title {
+        justify-content: space-evenly !important;
+    }
+    #title :first-child {
+        margin-right: 0 !important;
+    }
+    nav > div > div {
+        margin-bottom: 0 !important;
+    }
+    #resume > p {
+        padding-bottom: 0 !important;
+    }
+}
+#title p {
+    text-align: center;
+}
 #title :first-child {
-    margin: 0;
+    margin: 0 5vw 0 0;
     font-size: 6.5vw;
     letter-spacing: 0.2em;
     font-variant: small-caps;
@@ -86,7 +103,7 @@ header {
 .bevel {
     background: linear-gradient(45deg, transparent 35px, #222 35px), linear-gradient(315deg, transparent 35px, #222 35px);
     background-size: 51%, 51%;
-    background-position: bottom left, bottom right;
+    background-position: left top, right top;
     background-repeat: no-repeat;
 }
 .reverse, .forward, .slide-base {
@@ -108,19 +125,23 @@ nav > div {
     display: flex;
 }
 nav > div > div {
+    margin-bottom: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
 }
-.slide, nav a, #contact a, .slide-button {
+.slide, nav a, #contact a, .slide-button, .award {
     text-decoration: none;
 }
-nav a, #contact a, .slide-button {
+nav a, #contact a, .slide-button, .award {
     margin: 0;
     font-size: 2em;
     color: white;
     font-family: 'Montserrat', sans-serif;
+}
+.award {
+    font-size: 1em;
 }
 nav a {
     text-transform: uppercase;
@@ -133,7 +154,7 @@ nav a {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: #292929fb;
+    background-color: rgba(41, 41, 41, 0.985);
 }
 #contact a {
     font-size: 2em;
@@ -143,6 +164,8 @@ nav a {
     display: flex;
     justify-content: center;
     font-weight: 400;
+}
+#contact a, .award {
     transition: color 400ms ease-in-out;
 }
 #contact a+a {
@@ -157,7 +180,7 @@ nav a {
 .fa-linkedin {
     margin-right: 0.54em;
 }
-#contact a:hover {
+#contact a:hover, .award:hover {
     color: #d0d0d0;
 }
 .underline {
@@ -238,6 +261,9 @@ nav a {
     display: flex;
     align-items: center;
 }
+.slide-base p {
+    line-height: 1.5;
+}
 .hidden {
     opacity: 0 !important;
 }
@@ -249,6 +275,14 @@ nav a {
 .slide-subtitle {
     font-size: 2em;
     letter-spacing: 0.3px;
+}
+.fa-award {
+    font-size: 110%;
+    margin-right: 0.5em;
+}
+.award {
+    font-size: 75%;
+    text-transform: uppercase;
 }
 .slide-button {
     cursor: pointer;
@@ -283,9 +317,10 @@ nav a {
     letter-spacing: 0.1em;
     width: fit-content;
     height: 1.8em;
+    padding-bottom: 4em;
     background: linear-gradient(45deg, transparent 35px, #292929 35px), linear-gradient(315deg, transparent 35px, #292929 35px);
     background-size: 51%, 51%;
-    background-position: bottom left, bottom right;
+    background-position: left top, right top;
     background-repeat: no-repeat;
 }
 #resume > div {
@@ -336,8 +371,19 @@ p.l3 {
         width: 100vw;
         padding: 0.5em 0;
     }
+    @supports (not (place-items: stretch)) {
+        #title :first-child {
+            margin-right: 0 !important;
+        }
+        nav > div > div {
+            margin-bottom: 0 !important;
+        }
+    }
 }
 @media (max-width: 800px) {
+    .award {
+        display: none;
+    }
     .col {
         flex: 1 0 100%;
     }

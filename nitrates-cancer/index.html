@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="author" content="Johnathon Pantzlaff">
+        <title>Groundwater Nitrates and Cancer Risk</title>
+        <!-- External stylesheets -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tajawal">
+        <link rel="stylesheet" href="css/mapbox-gl.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+        <div id="print">
+            <p class="center"><b>Groundwater Nitrates and Cancer Risk</b></p>
+            <p class="center">Regression Results</p>
+            <div id="print-parameters">
+                <p>Interpolation method: Inverse distance weighted</p>
+                <p>Power: <span class="current-power">2.0</span></p>
+                <p>Cell size: 12 km<sup>2</sup></p>
+            </div>
+            <img id="print-chart" src="" alt="Printable chart">
+            <p class="center">Best fitting model (<i>R</i><sup>2</sup> = <span class="r2-stat"></span>%): <i>y</i> = <span class="m-stat"></span> &bull; <i>x</i> + <span class="b-stat"></span></p>
+            <p class="center"><i>x</i> = Nitrate (ppm)&ensp;|&ensp;<i>y</i> = Cancer rate per 1,000</p>
+        </div>
+        <div id="loading">
+            <div id="loading-spinner"></div>
+            <div id="loading-text">Loading&hellip;</div>
+        </div>
+        <div id="wrapper">
+            <!--<p id="title">Groundwater Nitrate and Cancer Risk</p>-->
+            <div id="controls">
+                <div id="legend">
+                    <button id="legend-button" class="active" data-expands="legend" type="button">
+                        <p><i class="fas fa-list-ul"></i></p>
+                    </button>
+                    <div id="legend-menu">
+                        <div id="gradient"></div>
+                        <div id="scale">
+                            <p id="low">-1.9</p>
+                            <p id="mid">7.5</p>
+                            <p id="high">17.0</p>
+                        </div>
+                        <p id="attribute">Nitrates in Water (ppm)</p>
+                    </div>
+                </div>
+                <div id="settings">
+                    <button id="settings-button" class="active" data-expands="settings" type="button">
+                        <p><i class="fas fa-cog"></i></p>
+                    </button>
+                    <div id="settings-menu" class="menu">
+                        <p id="data-select-text">Display Data</p>
+                        <select id="data-select">
+                            <option value="grid" selected>Nitrate Content by Cell</option>
+                            <option value="tractsNitrate">Nitrate Content by Tract</option>
+                            <option value="tractsIndex">Hotspots of Correlation</option>
+                        </select>
+                        <div id="wells-group">
+                            <p id="wells-toggle-text">Well Locations</p>
+                            <button id="wells-toggle" type="button" data-mode="true">
+                                <div id="wells-true">ON</div>
+                                <div id="wells-false" class="active">OFF</div>
+                            </button>
+                        </div>
+                        <div id="power-group">
+                            <p><b>IDW Power</b> <small>(1 / 2<sup><i>k</i></sup>)</small></p>
+                            <div id="power-edit">
+                                <input id="idw-power" type="range" min="0.5" max="10" step="0.1" value="2">
+                                <p id="power-display"><i>k</i> = <span class="current-power">2.0</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="chart">
+                    <button id="chart-button" data-expands="chart" type="button">
+                        <p><i class="far fa-chart-bar"></i></p>
+                    </button>
+                    <div id="chart-menu" class="menu">
+                        <p id="stats">Best fitting model (<i>R</i><sup>2</sup> = <span class="r2-stat"></span>%):<br>
+                        <i>y</i> = <span class="m-stat"></span> &bull; <i>x</i> + <span class="b-stat"></span><br>
+                        <i>x</i> = Nitrate (ppm)&ensp;|&ensp;<i>y</i> = Cancer rate per 1,000</p>
+                        <canvas id="chart-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="map"></div>
+        <!-- External scripts -->
+        <script src="lib/topojson-client.js"></script>
+        <script src="lib/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <script src="https://unpkg.com/simple-statistics@7.0.2/dist/simple-statistics.min.js"></script>
+        <script src="lib/mapbox-gl.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
