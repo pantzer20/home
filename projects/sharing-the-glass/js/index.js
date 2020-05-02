@@ -71,9 +71,9 @@ let activeFeature = null;
 /* Create a Leaflet map in the "map" div */
 let map = L.map('map', {
     /* Render with Canvas rather than the default SVG */
-    renderer: L.canvas({
-        padding: 3
-    }),
+    //renderer: L.canvas({
+    //    padding: 3
+    //}),
     /* Restrict zooming to a few zoom levels */
     minZoom: 3,
     maxZoom: 5,
@@ -118,7 +118,7 @@ let active = L.geoJSON();
 
 /* Request the TopoJSON data containing the country and region features via AJAX */
 $.get({
-    url: 'data/combined.topojson',
+    url: 'data/combined.json',
     /* Expect JSON in response */
     dataType: 'json',
     /* When the response is received: */

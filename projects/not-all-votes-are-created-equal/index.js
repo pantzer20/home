@@ -219,7 +219,7 @@ map.fitBounds([[-128, 25], [-65, 50]], {
 
 map.on('load', function() {
     $.get({
-        url: 'features.topojson',
+        url: 'features.json',
         dataType: 'json',
         success: function(d) {
             statesData = topojson.feature(d, d.objects.states);
