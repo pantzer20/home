@@ -75,7 +75,9 @@ class Slideshow {
     }
 }
 
-const works = new Slideshow($('body'), $('#works'),
+const works = new Slideshow(
+    $('body'),
+    $('#works'),
     [
         {
             title: 'Boom, Bust, and Renewal',
@@ -95,144 +97,24 @@ const works = new Slideshow($('body'), $('#works'),
             medium: 'Application',
             image: './slides/sharing-the-glass.png',
             url: './projects/sharing-the-glass/'
-        }/*, {
+        }, /* {
+            title: 'PlatMaster',
+            subtitle: 'A document georeferencer focused on survey-grade precision',
+            medium: 'Application',
+            image: './slides/sharing-the-glass.png',
+            url: './projects/sharing-the-glass/'
+        }, {
             title: 'Not All Votes Are Created Equal',
             subtitle: 'Individual vote power in U.S. federal elections',
             medium: 'Application',
             image: './slides/not-all-votes-are-created-equal.png',
             url: './projects/not-all-votes-are-created-equal/'
-        }*/
+        } */
     ],
     {
         interval: 6000
     }
 );
-
-/*
-const data = {
-    education: {
-        type: 'FeatureCollection',
-        features: [{
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [-81.305, 28.744]
-            },
-            properties: {
-                name: 'Seminole State College of Florida',
-                locale: 'Sanford, Florida',
-                start: new Date(2012, 5),
-                end: new Date(2013, 11),
-                degree: 'Associate of Arts',
-                emphasis: 'Political Science',
-                grade: 4,
-                narrative: ''
-            }
-        }, {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [-87.922, 44.532]
-            },
-            properties: {
-                name: 'University of Wisconsin &ndash; Green Bay',
-                locale: 'Green Bay, Wisconsin',
-                start: new Date(2014, 4),
-                end: new Date(2015, 4),
-                degree: 'Bachelor of Arts',
-                major: 'Urban and Regional Studies',
-                emphasis: 'Urban and Regional Planning',
-                minor: ['Environmental Policy and Planning', 'Geography'],
-                grade: 3.78,
-                narrative: ''
-            }
-        }, {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [-89.413, 43.076]
-            },
-            properties: {
-                name: 'University of Wisconsin &ndash; Madison',
-                locale: 'Madison, Wisconsin',
-                start: new Date(2016, 8),
-                end: 'present',
-                degree: 'Master of Sciences',
-                major: 'Cartography and Geographic Information Systems',
-                emphasis: 'Development',
-                grade: 4,
-                narrative: ''
-            }
-        }]
-    },
-    employers: {
-        type: 'FeatureCollection',
-        features: [{
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [-88.014, 44.514]
-            },
-            properties: {
-                name: 'Brown County',
-                short: 'Brown County (Wisconsin)',
-                locale: 'Green Bay, Wisconsin',
-                unit: 'Planning and Land Services',
-                start: new Date(2015, 0),
-                end: new Date(2015, 3),
-                narrative: ''
-            }
-        }, {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [-98.486, 45.463]
-            },
-            properties: {
-                name: 'City of Aberdeen',
-                short: 'Aberdeen (South Dakota)',
-                locale: 'Aberdeen, South Dakota',
-                unit: 'Planning and Zoning Department',
-                start: new Date(2015, 7),
-                end: new Date(2017, 4),
-                narrative: ''
-            }
-        }, {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [-81.418, 28.5]
-            },
-            properties: {
-                name: 'Orange County Board of County Commissioners',
-                short: 'Orange County (Florida)',
-                locale: 'Orlando, Florida',
-                unit: 'Public Works Department',
-                start: new Date(2017, 4),
-                end: 'present',
-                narrative: ''
-            }
-        }]
-    },
-    works: [{
-        title: 'Stacking the Deck',
-        subtitle: 'Indicators of gerrymandering in United States congressional districts',
-        medium: 'Web Map',
-        date: new Date(2018, 3),
-        narrative: '',
-        thumbnail: '',
-        url: ''
-    }, {
-        title: 'Vancouver Walkability',
-        subtitle: '',
-        medium: 'Web Map',
-        date: new Date(2017, 4),
-        narrative: '',
-        thumbnail: '',
-        url: ''
-    }]
-};
-*/
 
 const nav = {
     elements: {
